@@ -19,9 +19,14 @@
 #  dni                    :string           not null
 #
 
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+require 'rails_helper'
+
+RSpec.describe User, :type => :model do
+  describe "factory" do
+    let(:user) { build :user }
+
+    it {
+      expect(user).to be_valid
+    }
+  end
 end

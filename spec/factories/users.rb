@@ -19,9 +19,11 @@
 #  dni                    :string           not null
 #
 
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+FactoryGirl.define do
+  factory :user do
+    sequence(:name)  { |n| "User #{n}" }
+    sequence(:dni)   { |n| 1023586682 + n }
+    sequence(:email) { |n| "factory.user.#{n}@spondylous.com" }
+    password         { SecureRandom.hex }
+  end
 end
