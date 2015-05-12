@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :offers
+
+  validates :name, presence: true
+  validates :dni, presence: true,
+                  uniqueness: true
 end

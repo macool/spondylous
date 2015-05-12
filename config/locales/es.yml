@@ -250,6 +250,9 @@
       user:
         password: Contraseña
         password_confirmation: Confirmar contraseña
+        remember_me: Recordarme
+        name: Nombre
+        dni: DNI
 
   actions:
     new: "Nuevo"

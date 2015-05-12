@@ -6,6 +6,18 @@ h2 = t("views.users.sign_up")
   = devise_error_messages!
 
   .form-group
+    = f.label :name
+    = f.text_field :name,
+                   class: "form-control",
+                   required: true
+
+  .form-group
+    = f.label :dni
+    = f.text_field :dni,
+                   class: "form-control",
+                   required: true
+
+  .form-group
     = f.label :email
     = f.email_field :email,
                     class: "form-control",
