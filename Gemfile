@@ -33,6 +33,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 
 gem "slim-rails"
 gem "devise"
+gem "money-rails"
 gem "decent_exposure"
 
 group :development, :test do
