@@ -1,0 +1,21 @@
+= form_for [user, offer] do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title,
+                   required: true,
+                   class: "form-control"
+
+  .form-group
+    = f.label :detail
+    = f.text_area :detail,
+                  class: "form-control"
+
+  .form-group
+    = f.label :price_amount
+    = f.number_field :price_amount,
+                     required: true,
+                     class: "form-control",
+                     step: "any"
+
+  .actions
+    = f.submit class: "btn btn-primary"

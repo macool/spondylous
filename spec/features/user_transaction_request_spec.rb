@@ -5,7 +5,6 @@ describe %{
   I want to be prompted before a transaction is made
   So that I can confirm or deny
 } do
-  let(:client) { create :user }
   let(:seller) { create :user }
   let(:offer) { create :offer, user: seller }
 

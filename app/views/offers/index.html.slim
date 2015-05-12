@@ -1,0 +1,11 @@
+h2
+  => user.name
+  = t("activerecord.models.offer").downcase
+  | :
+
+ul
+  = render offers
+
+/ TODO: use cancan
+= link_to t("views.offers.new"),
+          new_user_offer_path(user)
