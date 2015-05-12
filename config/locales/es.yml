@@ -11,6 +11,14 @@
   views:
     submitting: "Enviando.."
     unauthorized: "No tienes permiso para realizar esta acción"
+    users:
+      sign_up: Registrarse
+      sign_in_with: Iniciar sesión con %{provider}
+      log_in: Iniciar sesión
+      forgot_password: ¿Olvidó su contraseña?
+      confirmation_instructions: ¿No recibiste instrucciones para confirmar tu cuenta?
+      unlock_instructions: ¿No recibiste instrucciones para desbloquear tu cuenta?
+      password_length_help: "(%{minimum} caracteres mínimo)"
   date:
     formats:
       default: "%d/%m/%Y"
@@ -195,6 +203,7 @@
     format: "%{message}"
 
     messages: &errors_messages
+      not_saved: Imposible procesar
       inclusion: "%{attribute} no está incluido en la lista"
       exclusion: "%{attribute} está reservado"
       invalid: "%{attribute} no es válido"
@@ -237,6 +246,10 @@
 
       full_messages:  # this doesn't work (?)
         format: "%{message}"
+    attributes:
+      user:
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
 
   actions:
     new: "Nuevo"
