@@ -26,8 +26,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :offers
+  has_one :account
+
+  before_create :build_default_account
 
   validates :name, presence: true
   validates :dni, presence: true,
                   uniqueness: true
+
+  private
+
+  def build_default_account
+    build_account
+  end
 end
