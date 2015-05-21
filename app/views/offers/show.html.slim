@@ -1,3 +1,12 @@
-= offer.title
-= offer.detail
-= offer.price
+.row
+  .col-sm-6
+    h3 = offer.title
+    h4
+      span.small de
+      =< offer.user.name
+    p = offer.detail
+    p = humanized_money_with_symbol offer.price
+  .col-sm-6
+    - if current_user
+      = render "users/account", user: current_user
+      = render "transactions/new"

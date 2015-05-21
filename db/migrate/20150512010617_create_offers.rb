@@ -4,7 +4,7 @@ class CreateOffers < ActiveRecord::Migration
       t.string :title, null: false
       t.text :detail
       t.monetize :price, null: false
-      t.references :user, index: true
+      t.references :user, index: true, null: false
 
       t.timestamps null: false
     end

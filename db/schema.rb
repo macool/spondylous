@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512010617) do
+ActiveRecord::Schema.define(version: 20150521031216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,12 +31,24 @@ ActiveRecord::Schema.define(version: 20150512010617) do
     t.text     "detail"
     t.integer  "price_cents",    default: 0,     null: false
     t.string   "price_currency", default: "USD", null: false
-    t.integer  "user_id"
+    t.integer  "user_id",                        null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
 
   add_index "offers", ["user_id"], name: "index_offers_on_user_id", using: :btree
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "account_id",                            null: false
+    t.integer  "offer_id",                              null: false
+    t.integer  "cached_price_cents",    default: 0,     null: false
+    t.string   "cached_price_currency", default: "USD", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "transactions", ["account_id"], name: "index_transactions_on_account_id", using: :btree
+  add_index "transactions", ["offer_id"], name: "index_transactions_on_offer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -59,5 +71,8 @@ ActiveRecord::Schema.define(version: 20150512010617) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "accounts", "users"
   add_foreign_key "offers", "users"
+  add_foreign_key "transactions", "accounts"
+  add_foreign_key "transactions", "offers"
 end

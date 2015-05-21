@@ -4,6 +4,9 @@ class OffersController < ApplicationController
   }
   expose(:offers, ancestor: :user)
   expose(:offer, attributes: :offer_params)
+  expose(:transaction) {
+    Transaction.new offer: offer
+  }
 
   before_action :authenticate_user!, only: [:create]
 
