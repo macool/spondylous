@@ -1,0 +1,9 @@
+- if resource.errors.any?
+  .panel.panel-danger
+    .panel-heading
+      .panel-title
+        = flash[:error] || pluralize(resource.errors.count, "error")
+
+    .panel-body
+      - resource.errors.full_messages.each do |msg|
+        div = msg

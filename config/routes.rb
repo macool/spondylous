@@ -58,10 +58,11 @@ Rails.application.routes.draw do
   #   end
 
   resources :users do
-    resources :offers
+    resources :offers do
+      resource :purchase, only: :create
+    end
+    resources :payments
   end
-
-  resources :transactions
 
   root "home#index"
 end

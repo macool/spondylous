@@ -24,6 +24,8 @@
       created: Oferta creada
     transactions:
       pay: Pagar
+      failure: Imposible completar la transacción
+      success: Transacción completada
   date:
     formats:
       default: "%d/%m/%Y"

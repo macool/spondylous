@@ -36,4 +36,29 @@ RSpec.describe Transaction, :type => :model do
       ).to include(I18n.t("errors.messages.invalid_balance"))
     }
   end
+
+  describe "updates accounts' balance" do
+    let(:account) { create :account, balance: 10 }
+    let(:offer) { create :offer, price: 4.20 }
+    let(:transaction) {
+      build :transaction, account: account,
+                          offer: offer
+    }
+
+    it {
+      expect {
+        transaction.save!
+      }.to change {
+        account.balance
+      }.by(offer.price * -1)
+    }
+
+    it {
+      expect {
+        transaction.save!
+      }.to change {
+        offer.user.account.balance
+      }.by(offer.price)
+    }
+  end
 end

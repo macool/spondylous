@@ -11,6 +11,8 @@
 #
 
 class Account < ActiveRecord::Base
+  class InsufficientFundsError < StandardError; end
+
   belongs_to :user
   has_many :transactions
 
@@ -21,4 +23,16 @@ class Account < ActiveRecord::Base
 
   validates :balance, presence: true
   validates :user_id, presence: true
+
+  def debt!(offer)
+    if offer.price > balance
+      raise InsufficientFundsError
+    else
+      update!(balance: balance - offer.price)
+    end
+  end
+
+  def credit!(offer)
+    update!(balance: balance + offer.price)
+  end
 end

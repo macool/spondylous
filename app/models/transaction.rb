@@ -21,6 +21,7 @@ class Transaction < ActiveRecord::Base
            }
 
   before_validation :cache_price!
+  before_create :credit_accounts!
 
   begin :validations
     validates :offer, presence: true
@@ -42,5 +43,10 @@ class Transaction < ActiveRecord::Base
 
   def cache_price!
     self.cached_price = offer.price
+  end
+
+  def credit_accounts!
+    account.debt!(offer)
+    offer.user.account.credit!(offer)
   end
 end

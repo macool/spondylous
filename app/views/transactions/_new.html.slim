@@ -1,3 +1,6 @@
-= form_for transaction do |f|
+= form_for transaction,
+           url: user_offer_purchase_path(user, offer) do |f|
+  = render "shared/form_errors", resource: transaction
+
   = f.hidden_field :offer_id
   = f.submit t("views.transactions.pay")
