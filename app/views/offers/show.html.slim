@@ -10,3 +10,5 @@
     - if current_user
       = render "users/account", user: current_user
       = render "transactions/new"
+    - else
+      = login_form

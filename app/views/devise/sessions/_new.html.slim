@@ -1,0 +1,33 @@
+h2 = t("views.users.log_in")
+
+= form_for resource,
+           as: resource_name,
+           url: session_path(resource_name) do |f|
+  .form-group
+    = f.label :email
+    = f.email_field :email,
+                    required: true,
+                    class: "form-control",
+                    autofocus: true
+
+  .form-group
+    = f.label :password
+    = f.password_field :password,
+                       required: true,
+                       class: "form-control",
+                       autocomplete: "off"
+
+  - if devise_mapping.rememberable?
+    .form-group
+      = f.check_box :remember_me, class: "checkbox"
+      = f.label :remember_me
+
+  .actions
+    = f.submit t("views.users.log_in"),
+               class: "btn btn-primary"
+
+= render "devise/shared/links",
+         resource: resource,
+         resource_name: resource_name,
+         devise_mapping: devise_mapping,
+         hide_login: true

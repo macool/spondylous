@@ -35,6 +35,7 @@ gem "slim-rails"
 gem "devise"
 gem "money-rails"
 gem "decent_exposure"
+gem "little_decorator"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

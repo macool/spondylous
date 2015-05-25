@@ -9,6 +9,7 @@ class OffersController < ApplicationController
   }
 
   before_action :authenticate_user!, only: [:create]
+  after_action :store_location!, only: [:show]
 
   def create
     if offer.save

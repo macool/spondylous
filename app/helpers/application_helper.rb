@@ -16,4 +16,16 @@ module ApplicationHelper
       key
     end
   end
+
+  ##
+  # devise's login form for User
+  def login_form
+    resource = User.new(email: params[:email])
+    resource_name = "user"
+    devise_mapping = Devise.mappings[:user]
+    render "devise/sessions/new",
+           resource: resource,
+           resource_name: resource_name,
+           devise_mapping: devise_mapping
+  end
 end

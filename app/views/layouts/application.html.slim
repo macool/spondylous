@@ -10,5 +10,6 @@ head
   = csrf_meta_tags
 body
   .container
+    = render "layouts/current_session"
     = render "layouts/flashes"
     = yield

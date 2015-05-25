@@ -1,4 +1,4 @@
-- if controller_name != 'sessions'
+- if controller_name != 'sessions' and (defined?(hide_login) && !hide_login)
   = link_to t("views.users.log_in"),
             new_session_path(resource_name)
 
